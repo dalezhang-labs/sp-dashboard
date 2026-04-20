@@ -133,7 +133,7 @@ GET /api/context?q=xxx               → 全文搜索（跨项目）
 curl -s http://localhost:3000/api/projects/SLUG | jq .
 ```
 
----
+--
 
 ## 文件结构
 
