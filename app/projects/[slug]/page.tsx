@@ -1,20 +1,29 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
-import { projects, projectTasks, projectLogs } from "@/lib/schema";
+import { projects, projectTasks, projectLogs, projectContext } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { TaskColumn } from "./task-column";
-import { addTask } from "./actions";
+import { ContextEditor } from "./context-editor";
+import { addTask, addLog } from "./actions";
 
 const STATUS_COLORS: Record<string, string> = {
   idea: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   building: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   live: "bg-green-500/20 text-green-400 border-green-500/30",
   archived: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+};
+
+const LOG_TYPE_COLORS: Record<string, string> = {
+  note: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+  milestone: "bg-green-500/20 text-green-400 border-green-500/30",
+  decision: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  blocker: "bg-red-500/20 text-red-400 border-red-500/30",
 };
 
 export default async function ProjectDetailPage({
@@ -30,7 +39,7 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  const [tasks, recentLogs] = await Promise.all([
+  const [tasks, allLogs, contextRows] = await Promise.all([
     db
       .select()
       .from(projectTasks)
@@ -40,13 +49,18 @@ export default async function ProjectDetailPage({
       .select()
       .from(projectLogs)
       .where(eq(projectLogs.projectId, project.id))
-      .orderBy(desc(projectLogs.createdAt))
-      .limit(5),
+      .orderBy(desc(projectLogs.createdAt)),
+    db
+      .select()
+      .from(projectContext)
+      .where(eq(projectContext.projectId, project.id))
+      .orderBy(projectContext.key),
   ]);
 
   const todo = tasks.filter((t) => t.status === "todo");
   const inProgress = tasks.filter((t) => t.status === "in_progress");
   const done = tasks.filter((t) => t.status === "done");
+  const recentLogs = allLogs.slice(0, 5);
 
   const daysLeft = project.deadline4w
     ? Math.ceil((project.deadline4w.getTime() - Date.now()) / 86400000)
@@ -73,6 +87,8 @@ export default async function ProjectDetailPage({
         <TabsList className="mb-6">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="tasks">Tasks ({tasks.length})</TabsTrigger>
+          <TabsTrigger value="context">Context ({contextRows.length})</TabsTrigger>
+          <TabsTrigger value="log">Log ({allLogs.length})</TabsTrigger>
         </TabsList>
 
         {/* ── Overview Tab ── */}
@@ -143,11 +159,17 @@ export default async function ProjectDetailPage({
               <p className="text-xs font-medium text-muted-foreground mb-2">Recent Logs</p>
               <ul className="space-y-1.5">
                 {recentLogs.map((log) => (
-                  <li key={log.id} className="text-sm text-muted-foreground">
-                    <span className="text-xs mr-2 opacity-60">
+                  <li key={log.id} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="text-xs opacity-60 shrink-0 mt-0.5">
                       {log.createdAt?.toLocaleDateString()}
                     </span>
-                    {log.note}
+                    <Badge
+                      variant="outline"
+                      className={`text-xs shrink-0 ${LOG_TYPE_COLORS[log.logType ?? "note"] ?? ""}`}
+                    >
+                      {log.logType ?? "note"}
+                    </Badge>
+                    <span>{log.note}</span>
                   </li>
                 ))}
               </ul>
@@ -182,6 +204,74 @@ export default async function ProjectDetailPage({
             <TaskColumn title="Todo" tasks={todo} slug={slug} />
             <TaskColumn title="In Progress" tasks={inProgress} slug={slug} />
             <TaskColumn title="Done" tasks={done} slug={slug} />
+          </div>
+        </TabsContent>
+
+        {/* ── Context Tab ── */}
+        <TabsContent value="context" className="space-y-6">
+          <ContextEditor
+            projectId={project.id}
+            slug={slug}
+            contextRows={contextRows}
+          />
+        </TabsContent>
+
+        {/* ── Log Tab ── */}
+        <TabsContent value="log" className="space-y-6">
+          <form action={addLog} className="flex gap-2 items-start">
+            <input type="hidden" name="project_id" value={project.id} />
+            <input type="hidden" name="slug" value={slug} />
+            <Textarea
+              name="note"
+              placeholder="Add a log entry…"
+              required
+              rows={2}
+              className="flex-1 resize-none"
+            />
+            <div className="flex flex-col gap-2">
+              <select
+                name="log_type"
+                defaultValue="note"
+                className="h-8 rounded-lg border border-input bg-background px-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+              >
+                <option value="note">Note</option>
+                <option value="milestone">Milestone</option>
+                <option value="decision">Decision</option>
+                <option value="blocker">Blocker</option>
+              </select>
+              <button
+                type="submit"
+                className="h-8 px-4 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/80 transition-colors"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+
+          <div className="space-y-3">
+            {allLogs.length === 0 ? (
+              <p className="text-sm text-muted-foreground text-center py-8">No logs yet.</p>
+            ) : (
+              allLogs.map((log) => (
+                <div
+                  key={log.id}
+                  className="flex items-start gap-3 p-3 rounded-lg border border-border bg-card"
+                >
+                  <div className="flex flex-col items-center gap-1 shrink-0">
+                    <span className="text-xs text-muted-foreground opacity-60">
+                      {log.createdAt?.toLocaleDateString()}
+                    </span>
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${LOG_TYPE_COLORS[log.logType ?? "note"] ?? ""}`}
+                    >
+                      {log.logType ?? "note"}
+                    </Badge>
+                  </div>
+                  <p className="text-sm flex-1">{log.note}</p>
+                </div>
+              ))
+            )}
           </div>
         </TabsContent>
       </Tabs>

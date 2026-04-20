@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { SearchDialog } from "@/components/search-dialog";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable} dark`}>
       <body className="min-h-screen bg-background text-foreground font-sans">
         {children}
+        <SearchDialog />
       </body>
     </html>
   );

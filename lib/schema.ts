@@ -25,6 +25,7 @@ export const projectLogs = coreSchema.table("project_logs", {
     onDelete: "cascade",
   }),
   note: text("note").notNull(),
+  logType: text("log_type").notNull().default("note"), // note | milestone | decision | blocker
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
 

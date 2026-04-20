@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SearchTrigger } from "@/components/search-trigger";
 import type { Project } from "@/lib/schema";
 
 const STATUS_LABELS: Record<string, string> = {
@@ -109,9 +110,12 @@ export default async function HomePage() {
             {all.length} project{all.length !== 1 ? "s" : ""}
           </p>
         </div>
-        <Link href="/projects/new" className={buttonVariants()}>
-          + 新想法
-        </Link>
+        <div className="flex items-center gap-2">
+          <SearchTrigger />
+          <Link href="/projects/new" className={buttonVariants()}>
+            + 新想法
+          </Link>
+        </div>
       </div>
 
       <Tabs defaultValue="all">
