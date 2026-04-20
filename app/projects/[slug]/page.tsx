@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
-import { projects, projectTasks, projectLogs, projectContext } from "@/lib/schema";
+import { projectTasks, projectLogs, projectContext } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { TaskColumn } from "./task-column";
 import { ContextEditor } from "./context-editor";
 import { addTask, addLog } from "./actions";
+
+function formatLogTime(date: Date | null): string {
+  if (!date) return "";
+  const y = date.getFullYear();
+  const mo = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const h = String(date.getHours()).padStart(2, "0");
+  const mi = String(date.getMinutes()).padStart(2, "0");
+  return `${y}-${mo}-${d} ${h}:${mi}`;
+}
 
 const STATUS_COLORS: Record<string, string> = {
   idea: "bg-blue-500/20 text-blue-400 border-blue-500/30",
@@ -62,8 +72,9 @@ export default async function ProjectDetailPage({
   const done = tasks.filter((t) => t.status === "done");
   const recentLogs = allLogs.slice(0, 5);
 
+  const now = new Date();
   const daysLeft = project.deadline4w
-    ? Math.ceil((project.deadline4w.getTime() - Date.now()) / 86400000)
+    ? Math.ceil((project.deadline4w.getTime() - now.getTime()) / 86400000)
     : null;
 
   return (
@@ -161,7 +172,7 @@ export default async function ProjectDetailPage({
                 {recentLogs.map((log) => (
                   <li key={log.id} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <span className="text-xs opacity-60 shrink-0 mt-0.5">
-                      {log.createdAt?.toLocaleDateString()}
+                      {formatLogTime(log.createdAt)}
                     </span>
                     <Badge
                       variant="outline"
@@ -259,7 +270,7 @@ export default async function ProjectDetailPage({
                 >
                   <div className="flex flex-col items-center gap-1 shrink-0">
                     <span className="text-xs text-muted-foreground opacity-60">
-                      {log.createdAt?.toLocaleDateString()}
+                      {formatLogTime(log.createdAt)}
                     </span>
                     <Badge
                       variant="outline"

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { projects, projectTasks, projectContext } from "@/lib/schema";
-import { ilike, or, eq } from "drizzle-orm";
+import { ilike, or } from "drizzle-orm";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
