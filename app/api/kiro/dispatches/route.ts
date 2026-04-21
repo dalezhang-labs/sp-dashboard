@@ -4,6 +4,27 @@ import { kiroDispatches, projects } from "@/lib/schema";
 import { desc, eq } from "drizzle-orm";
 import { validateKiroAuth } from "@/lib/kiro-auth";
 
+/**
+ * Sanitize a string field: trim, limit length, strip control characters.
+ */
+function sanitizeString(value: unknown, maxLength = 2000): string | null {
+  if (typeof value !== "string") return null;
+  return value
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "") // strip control chars (keep \n \r \t)
+    .trim()
+    .slice(0, maxLength) || null;
+}
+
+/**
+ * Validate that a value is a safe integer (for PID etc).
+ */
+function sanitizeInt(value: unknown): number | null {
+  if (value === null || value === undefined) return null;
+  const n = Number(value);
+  if (!Number.isInteger(n) || n < 0 || n > 2147483647) return null;
+  return n;
+}
+
 // GET /api/kiro/dispatches — list all dispatches
 // Optional query params: ?status=running&project=imagelingo&limit=20
 export async function GET(req: Request) {
@@ -36,12 +57,26 @@ export async function POST(req: Request) {
   const authError = validateKiroAuth(req);
   if (authError) return authError;
 
-  const body = await req.json();
-  const { project, agent, summary, taskDescription, pid, logFile } = body;
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid JSON body" },
+      { status: 400 }
+    );
+  }
+
+  const project = sanitizeString(body.project, 100);
+  const agent = sanitizeString(body.agent, 100);
+  const summary = sanitizeString(body.summary, 2000);
+  const taskDescription = sanitizeString(body.taskDescription, 5000);
+  const pid = sanitizeInt(body.pid);
+  const logFile = sanitizeString(body.logFile, 500);
 
   if (!project || !agent || !summary) {
     return NextResponse.json(
-      { error: "project, agent, and summary are required" },
+      { error: "project, agent, and summary are required (non-empty strings)" },
       { status: 400 }
     );
   }
@@ -61,9 +96,9 @@ export async function POST(req: Request) {
       project,
       agent,
       summary,
-      taskDescription: taskDescription || null,
-      pid: pid || null,
-      logFile: logFile || null,
+      taskDescription,
+      pid,
+      logFile,
       projectId,
       status: "running",
       startedAt: new Date(),

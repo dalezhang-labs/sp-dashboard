@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { KiroDispatch } from "@/lib/schema";
@@ -12,38 +12,101 @@ interface StatusConfig {
 }
 
 export function KiroDispatchList({
-  dispatches,
+  dispatches: initialDispatches,
   statusConfig,
 }: {
   dispatches: KiroDispatch[];
   statusConfig: Record<string, StatusConfig>;
 }) {
+  const [dispatches, setDispatches] = useState(initialDispatches);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [now, setNow] = useState(Date.now());
+
+  const hasRunning = dispatches.some((d) => d.status === "running");
+
+  const pollRunning = useCallback(async () => {
+    try {
+      const res = await fetch("/api/kiro/running");
+      if (!res.ok) return;
+      const data = await res.json();
+      const runningDispatches: KiroDispatch[] = data.dispatches;
+
+      setDispatches((prev) => {
+        const nonRunning = prev.filter((d) => d.status !== "running");
+        // Merge: replace running tasks with fresh data, keep non-running as-is
+        // Also update any previously-running task that is now completed
+        const runningIds = new Set(runningDispatches.map((d) => d.id));
+        const updatedNonRunning = nonRunning.map((d) => {
+          const fresh = runningDispatches.find((r) => r.id === d.id);
+          return fresh || d;
+        });
+        const newRunning = runningDispatches.filter(
+          (d) => !updatedNonRunning.some((u) => u.id === d.id)
+        );
+        return [...newRunning, ...updatedNonRunning].sort(
+          (a, b) =>
+            new Date(b.dispatchedAt || 0).getTime() -
+            new Date(a.dispatchedAt || 0).getTime()
+        );
+      });
+      setLastUpdated(new Date());
+    } catch {
+      // silently ignore polling errors
+    }
+  }, []);
+
+  // Poll every 5s when there are running tasks
+  useEffect(() => {
+    if (!hasRunning) return;
+    const interval = setInterval(pollRunning, 5000);
+    return () => clearInterval(interval);
+  }, [hasRunning, pollRunning]);
+
+  // Update "ago" display every second when polling is active
+  useEffect(() => {
+    if (!hasRunning || !lastUpdated) return;
+    const interval = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(interval);
+  }, [hasRunning, lastUpdated]);
 
   const filtered =
     filter === "all"
       ? dispatches
       : dispatches.filter((d) => d.status === filter);
 
+  const updatedAgo = lastUpdated
+    ? `Updated ${Math.max(0, Math.floor((now - lastUpdated.getTime()) / 1000))}s ago`
+    : null;
+
   return (
     <div>
-      {/* Filter buttons */}
-      <div className="flex gap-2 mb-4 flex-wrap">
-        {["all", "running", "completed", "failed", "blocked", "exited"].map(
-          (s) => (
-            <button
-              key={s}
-              onClick={() => setFilter(s)}
-              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                filter === s
-                  ? "bg-muted text-foreground border-muted-foreground/30"
-                  : "bg-transparent text-muted-foreground border-border hover:border-muted-foreground/30"
-              }`}
-            >
-              {s === "all" ? `All (${dispatches.length})` : `${statusConfig[s]?.icon || ""} ${statusConfig[s]?.label || s}`}
-            </button>
-          )
+      {/* Filter buttons + polling indicator */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex gap-2 flex-wrap">
+          {["all", "running", "completed", "failed", "blocked", "exited"].map(
+            (s) => (
+              <button
+                key={s}
+                onClick={() => setFilter(s)}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                  filter === s
+                    ? "bg-muted text-foreground border-muted-foreground/30"
+                    : "bg-transparent text-muted-foreground border-border hover:border-muted-foreground/30"
+                }`}
+              >
+                {s === "all"
+                  ? `All (${dispatches.length})`
+                  : `${statusConfig[s]?.icon || ""} ${statusConfig[s]?.label || s}`}
+              </button>
+            )
+          )}
+        </div>
+        {hasRunning && updatedAgo && (
+          <span className="text-xs text-muted-foreground shrink-0 ml-2">
+            {updatedAgo}
+          </span>
         )}
       </div>
 
@@ -211,7 +274,9 @@ export function KiroDispatchList({
 
                     <div className="flex gap-4 text-xs text-muted-foreground pt-2">
                       {d.pid && <span>PID: {d.pid}</span>}
-                      {d.logFile && <span className="font-mono">{d.logFile}</span>}
+                      {d.logFile && (
+                        <span className="font-mono">{d.logFile}</span>
+                      )}
                     </div>
                   </div>
                 )}
