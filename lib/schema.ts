@@ -1,4 +1,4 @@
-import { pgSchema, uuid, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgSchema, uuid, text, timestamp, integer, numeric } from "drizzle-orm/pg-core";
 
 export const coreSchema = pgSchema("core");
 
@@ -56,7 +56,51 @@ export const projectContext = coreSchema.table("project_context", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
 
+
+export const kiroDispatches = coreSchema.table("kiro_dispatches", {
+  id: uuid("id").primaryKey().defaultRandom(),
+
+  // Task info
+  project: text("project").notNull(),
+  agent: text("agent").notNull(), // "hermes-task" | "hermes-dev"
+  summary: text("summary").notNull(),
+  taskDescription: text("task_description"),
+
+  // Runtime info
+  pid: integer("pid"),
+  logFile: text("log_file"),
+
+  // Status
+  status: text("status").notNull().default("running"), // running | completed | failed | blocked | exited
+  reportStatus: text("report_status"), // DONE | PARTIAL | BLOCKED
+  currentAction: text("current_action"),
+
+  // Report fields
+  reportSummary: text("report_summary"),
+  reportCompleted: text("report_completed").array(),
+  reportBlockers: text("report_blockers").array(),
+  reportWarnings: text("report_warnings").array(),
+  reportNextSteps: text("report_next_steps").array(),
+
+  // Links
+  projectId: uuid("project_id").references(() => projects.id, {
+    onDelete: "set null",
+  }),
+  prUrl: text("pr_url"),
+
+  // Timestamps
+  dispatchedAt: timestamp("dispatched_at", { withTimezone: true }).defaultNow(),
+  startedAt: timestamp("started_at", { withTimezone: true }),
+  completedAt: timestamp("completed_at", { withTimezone: true }),
+  lastSyncAt: timestamp("last_sync_at", { withTimezone: true }),
+
+  // Metadata
+  creditsUsed: numeric("credits_used"),
+  durationSeconds: integer("duration_seconds"),
+});
+
 export type Project = typeof projects.$inferSelect;
 export type ProjectLog = typeof projectLogs.$inferSelect;
 export type ProjectTask = typeof projectTasks.$inferSelect;
 export type ProjectContext = typeof projectContext.$inferSelect;
+export type KiroDispatch = typeof kiroDispatches.$inferSelect;
