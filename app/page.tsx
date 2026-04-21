@@ -112,6 +112,12 @@ export default async function HomePage() {
         </div>
         <div className="flex items-center gap-2">
           <SearchTrigger />
+          <Link
+            href="/kiro"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            ⚡ Kiro Tasks
+          </Link>
           <Link href="/projects/new" className={buttonVariants()}>
             + 新想法
           </Link>
