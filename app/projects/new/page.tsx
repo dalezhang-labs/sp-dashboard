@@ -11,63 +11,65 @@ export default function NewProjectPage() {
         <Link href="/" className={buttonVariants({ variant: "ghost", size: "sm" })}>
           ← Back
         </Link>
-        <h1 className="text-xl font-bold">New Project</h1>
+        <h1 className="text-xl font-bold">New Side Project</h1>
+      </div>
+
+      <div className="p-3 rounded-lg border border-violet-500/30 bg-violet-500/5 mb-6">
+        <p className="text-xs text-violet-400">
+          💡 New projects start in <strong>Research</strong> phase. Define the problem first, validate demand, then decide whether to build.
+        </p>
       </div>
 
       <form action={createProject} className="space-y-5">
         <div className="space-y-1.5">
           <label htmlFor="name" className="text-sm font-medium">
-            Name <span className="text-destructive">*</span>
+            Project Name <span className="text-destructive">*</span>
           </label>
-          <Input id="name" name="name" required placeholder="My awesome project" />
+          <Input id="name" name="name" required placeholder="e.g. ReviewPilot" />
         </div>
 
         <div className="space-y-1.5">
           <label htmlFor="description" className="text-sm font-medium">
-            Description
+            One-liner
           </label>
-          <Textarea
+          <Input
             id="description"
             name="description"
-            rows={3}
-            placeholder="What is this project about?"
+            placeholder="What does it do in one sentence?"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="status" className="text-sm font-medium">
-            Status
+          <label htmlFor="problem" className="text-sm font-medium">
+            Problem Statement
           </label>
-          <select
-            id="status"
-            name="status"
-            defaultValue="idea"
-            className="w-full h-8 rounded-lg border border-input bg-background px-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-          >
-            <option value="idea">Idea</option>
-            <option value="building">Building</option>
-            <option value="live">Live</option>
-            <option value="archived">Archived</option>
-          </select>
+          <Textarea
+            id="problem"
+            name="problem_statement"
+            rows={3}
+            placeholder="Who has what pain? e.g. 'Amazon sellers spend 2hrs/day manually responding to reviews because...'"
+          />
+          <p className="text-xs text-muted-foreground">
+            This kicks off your research. Be specific about who and what.
+          </p>
         </div>
 
         <div className="space-y-1.5">
           <label htmlFor="tech_stack" className="text-sm font-medium">
-            Tech Stack
+            Tech Stack (optional)
           </label>
           <Input
             id="tech_stack"
             name="tech_stack"
             placeholder="Next.js, Postgres, Tailwind (comma-separated)"
           />
-          <p className="text-xs text-muted-foreground">Separate with commas</p>
         </div>
 
         <button
           type="submit"
           className="w-full h-8 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/80 transition-colors"
         >
-          Create Project
+          Create & Start Research
         </button>
       </form>
     </main>

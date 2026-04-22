@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
-import { projectTasks, projectContext, projectLogs } from "@/lib/schema";
+import { projectTasks, projectContext, projectLogs, projectResearch, projects } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 
 export async function addTask(formData: FormData) {
@@ -59,5 +59,96 @@ export async function addLog(formData: FormData) {
   if (!note) return;
 
   await db.insert(projectLogs).values({ projectId, note, logType });
+  revalidatePath(`/projects/${slug}`);
+}
+
+export async function upsertResearch(formData: FormData) {
+  const projectId = formData.get("project_id") as string;
+  const slug = formData.get("slug") as string;
+
+  const problemStatement = (formData.get("problem_statement") as string)?.trim() || null;
+  const targetAudience = (formData.get("target_audience") as string)?.trim() || null;
+  const existingSolutions = (formData.get("existing_solutions") as string)?.trim() || null;
+  const interviewCount = parseInt(formData.get("interview_count") as string) || 0;
+  const interviewNotes = (formData.get("interview_notes") as string)?.trim() || null;
+  const waitlistCount = parseInt(formData.get("waitlist_count") as string) || 0;
+  const marketSize = (formData.get("market_size") as string)?.trim() || null;
+  const monetization = (formData.get("monetization") as string)?.trim() || null;
+  const redditThreads = (formData.get("reddit_threads") as string)?.trim() || null;
+  const otherSignals = (formData.get("other_signals") as string)?.trim() || null;
+
+  // Parse competitors JSON safely
+  let competitors: unknown = null;
+  const competitorsRaw = (formData.get("competitors") as string)?.trim();
+  if (competitorsRaw) {
+    try {
+      competitors = JSON.parse(competitorsRaw);
+    } catch {
+      // Keep null if invalid JSON
+    }
+  }
+
+  const values = {
+    projectId,
+    problemStatement,
+    targetAudience,
+    existingSolutions,
+    competitors,
+    interviewCount,
+    interviewNotes,
+    waitlistCount,
+    marketSize,
+    monetization,
+    redditThreads,
+    otherSignals,
+    updatedAt: new Date(),
+  };
+
+  await db
+    .insert(projectResearch)
+    .values(values)
+    .onConflictDoUpdate({
+      target: projectResearch.projectId,
+      set: values,
+    });
+
+  revalidatePath(`/projects/${slug}`);
+}
+
+export async function setVerdict(formData: FormData) {
+  const projectId = formData.get("project_id") as string;
+  const slug = formData.get("slug") as string;
+  const verdict = formData.get("verdict") as string;
+  const verdictReason = (formData.get("verdict_reason") as string)?.trim() || null;
+
+  if (!["go", "pivot", "kill"].includes(verdict)) return;
+
+  // Update research verdict
+  await db
+    .update(projectResearch)
+    .set({ verdict, verdictReason, verdictAt: new Date(), updatedAt: new Date() })
+    .where(eq(projectResearch.projectId, projectId));
+
+  // Auto-advance project status based on verdict
+  if (verdict === "go") {
+    await db
+      .update(projects)
+      .set({ status: "validated", updatedAt: new Date() })
+      .where(eq(projects.id, projectId));
+  } else if (verdict === "kill") {
+    await db
+      .update(projects)
+      .set({ status: "archived", updatedAt: new Date() })
+      .where(eq(projects.id, projectId));
+  }
+  // pivot keeps status as "research"
+
+  // Log the decision
+  await db.insert(projectLogs).values({
+    projectId,
+    note: `Research verdict: ${verdict.toUpperCase()}${verdictReason ? ` — ${verdictReason}` : ""}`,
+    logType: "decision",
+  });
+
   revalidatePath(`/projects/${slug}`);
 }

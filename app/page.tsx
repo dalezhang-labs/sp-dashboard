@@ -9,16 +9,22 @@ import { SearchTrigger } from "@/components/search-trigger";
 import type { Project } from "@/lib/schema";
 
 const STATUS_LABELS: Record<string, string> = {
-  idea: "Idea",
+  research: "Research",
+  validated: "Validated",
   building: "Building",
+  beta: "Beta",
   live: "Live",
+  growing: "Growing",
   archived: "Archived",
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  idea: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  research: "bg-violet-500/20 text-violet-400 border-violet-500/30",
+  validated: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   building: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  beta: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   live: "bg-green-500/20 text-green-400 border-green-500/30",
+  growing: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   archived: "bg-gray-500/20 text-gray-400 border-gray-500/30",
 };
 
@@ -99,6 +105,7 @@ function ProjectGrid({ items }: { items: Project[] }) {
 export default async function HomePage() {
   const all = await db.select().from(projects).orderBy(projects.createdAt);
 
+  const active = all.filter((p) => p.status !== "archived");
   const byStatus = (status: string) => all.filter((p) => p.status === status);
 
   return (
@@ -124,32 +131,52 @@ export default async function HomePage() {
         </div>
       </div>
 
-      <Tabs defaultValue="all">
+      {/* Pipeline overview */}
+      <div className="flex gap-1 mb-6 overflow-x-auto pb-1">
+        {(["research", "validated", "building", "beta", "live", "growing"] as const).map(
+          (s) => {
+            const count = byStatus(s).length;
+            return (
+              <div
+                key={s}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border ${STATUS_COLORS[s]}`}
+              >
+                <span>{STATUS_LABELS[s]}</span>
+                <span className="opacity-70">{count}</span>
+              </div>
+            );
+          }
+        )}
+      </div>
+
+      <Tabs defaultValue="active">
         <TabsList className="mb-6">
-          <TabsTrigger value="all">All ({all.length})</TabsTrigger>
-          <TabsTrigger value="idea">
-            Idea ({byStatus("idea").length})
+          <TabsTrigger value="active">Active ({active.length})</TabsTrigger>
+          <TabsTrigger value="research">
+            Research ({byStatus("research").length})
           </TabsTrigger>
           <TabsTrigger value="building">
-            Building ({byStatus("building").length})
+            Building ({byStatus("building").length + byStatus("validated").length})
           </TabsTrigger>
-          <TabsTrigger value="live">Live ({byStatus("live").length})</TabsTrigger>
+          <TabsTrigger value="live">
+            Live ({byStatus("live").length + byStatus("beta").length + byStatus("growing").length})
+          </TabsTrigger>
           <TabsTrigger value="archived">
             Archived ({byStatus("archived").length})
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="all">
-          <ProjectGrid items={all} />
+        <TabsContent value="active">
+          <ProjectGrid items={active} />
         </TabsContent>
-        <TabsContent value="idea">
-          <ProjectGrid items={byStatus("idea")} />
+        <TabsContent value="research">
+          <ProjectGrid items={byStatus("research")} />
         </TabsContent>
         <TabsContent value="building">
-          <ProjectGrid items={byStatus("building")} />
+          <ProjectGrid items={[...byStatus("validated"), ...byStatus("building")]} />
         </TabsContent>
         <TabsContent value="live">
-          <ProjectGrid items={byStatus("live")} />
+          <ProjectGrid items={[...byStatus("beta"), ...byStatus("live"), ...byStatus("growing")]} />
         </TabsContent>
         <TabsContent value="archived">
           <ProjectGrid items={byStatus("archived")} />

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
-import { projectTasks, projectLogs, projectContext } from "@/lib/schema";
+import { projectTasks, projectLogs, projectContext, projectResearch } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { TaskColumn } from "./task-column";
 import { ContextEditor } from "./context-editor";
+import { ResearchEditor } from "./research-editor";
 import { addTask, addLog } from "./actions";
 
 function formatLogTime(date: Date | null): string {
@@ -23,9 +24,12 @@ function formatLogTime(date: Date | null): string {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  idea: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  research: "bg-violet-500/20 text-violet-400 border-violet-500/30",
+  validated: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   building: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  beta: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   live: "bg-green-500/20 text-green-400 border-green-500/30",
+  growing: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   archived: "bg-gray-500/20 text-gray-400 border-gray-500/30",
 };
 
@@ -49,7 +53,7 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  const [tasks, allLogs, contextRows] = await Promise.all([
+  const [tasks, allLogs, contextRows, researchRow] = await Promise.all([
     db
       .select()
       .from(projectTasks)
@@ -65,6 +69,11 @@ export default async function ProjectDetailPage({
       .from(projectContext)
       .where(eq(projectContext.projectId, project.id))
       .orderBy(projectContext.key),
+    db
+      .select()
+      .from(projectResearch)
+      .where(eq(projectResearch.projectId, project.id))
+      .then((rows) => rows[0] ?? null),
   ]);
 
   const todo = tasks.filter((t) => t.status === "todo");
@@ -94,13 +103,24 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      <Tabs defaultValue="overview">
+      <Tabs defaultValue={project.status === "research" ? "research" : "overview"}>
         <TabsList className="mb-6">
+          <TabsTrigger value="research">Research</TabsTrigger>
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="tasks">Tasks ({tasks.length})</TabsTrigger>
           <TabsTrigger value="context">Context ({contextRows.length})</TabsTrigger>
           <TabsTrigger value="log">Log ({allLogs.length})</TabsTrigger>
         </TabsList>
+
+        {/* ── Research Tab ── */}
+        <TabsContent value="research">
+          <ResearchEditor
+            projectId={project.id}
+            slug={slug}
+            projectStatus={project.status}
+            research={researchRow}
+          />
+        </TabsContent>
 
         {/* ── Overview Tab ── */}
         <TabsContent value="overview" className="space-y-6">

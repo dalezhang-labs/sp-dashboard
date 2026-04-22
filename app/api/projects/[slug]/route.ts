@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { projectTasks, projectContext, projectLogs } from "@/lib/schema";
+import { projects, projectTasks, projectContext, projectLogs, projectResearch } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
 
 export async function GET(
@@ -17,7 +17,7 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  const [tasks, contextRows, recentLogs] = await Promise.all([
+  const [tasks, contextRows, recentLogs, researchRows] = await Promise.all([
     db
       .select()
       .from(projectTasks)
@@ -33,7 +33,13 @@ export async function GET(
       .where(eq(projectLogs.projectId, project.id))
       .orderBy(desc(projectLogs.createdAt))
       .limit(10),
+    db
+      .select()
+      .from(projectResearch)
+      .where(eq(projectResearch.projectId, project.id)),
   ]);
+
+  const research = researchRows[0] ?? null;
 
   const daysLeft = project.deadline4w
     ? Math.ceil((project.deadline4w.getTime() - Date.now()) / 86400000)
@@ -63,5 +69,67 @@ export async function GET(
     tasks: groupedTasks,
     context: contextMap,
     recent_logs: recentLogs,
+    research: research
+      ? {
+          problem_statement: research.problemStatement,
+          target_audience: research.targetAudience,
+          existing_solutions: research.existingSolutions,
+          competitors: research.competitors,
+          interview_count: research.interviewCount,
+          waitlist_count: research.waitlistCount,
+          market_size: research.marketSize,
+          monetization: research.monetization,
+          verdict: research.verdict,
+          verdict_reason: research.verdictReason,
+          verdict_at: research.verdictAt,
+        }
+      : null,
   });
+}
+
+export async function PATCH(
+  req: Request,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+
+  const project = await db.query.projects.findFirst({
+    where: (p, { eq }) => eq(p.slug, slug),
+  });
+
+  if (!project) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  const body = await req.json();
+  const allowed: Record<string, keyof typeof projects.$inferInsert> = {
+    nextAction: "nextAction",
+    next_action: "nextAction",
+    description: "description",
+    techStack: "techStack",
+    tech_stack: "techStack",
+    status: "status",
+    deployUrl: "deployUrl",
+    deploy_url: "deployUrl",
+    githubUrl: "githubUrl",
+    github_url: "githubUrl",
+  };
+
+  const validStatuses = ["research", "validated", "building", "beta", "live", "growing", "archived"];
+  const updates: Record<string, unknown> = { updatedAt: new Date() };
+  for (const [key, val] of Object.entries(body)) {
+    const col = allowed[key];
+    if (!col) continue;
+    // Validate status values
+    if (col === "status" && !validStatuses.includes(val as string)) continue;
+    updates[col as string] = val;
+  }
+
+  const [updated] = await db
+    .update(projects)
+    .set(updates)
+    .where(eq(projects.id, project.id))
+    .returning();
+
+  return NextResponse.json({ project: updated });
 }

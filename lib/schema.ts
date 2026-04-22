@@ -1,4 +1,4 @@
-import { pgSchema, uuid, text, timestamp, integer, numeric } from "drizzle-orm/pg-core";
+import { pgSchema, uuid, text, timestamp, integer, numeric, jsonb } from "drizzle-orm/pg-core";
 
 export const coreSchema = pgSchema("core");
 
@@ -7,7 +7,7 @@ export const projects = coreSchema.table("projects", {
   name: text("name").notNull(),
   slug: text("slug").unique().notNull(),
   description: text("description"),
-  status: text("status").notNull().default("idea"),
+  status: text("status").notNull().default("research"), // research | validated | building | beta | live | growing | archived
   techStack: text("tech_stack").array(),
   githubUrl: text("github_url"),
   deployUrl: text("deploy_url"),
@@ -52,6 +52,42 @@ export const projectContext = coreSchema.table("project_context", {
   key: text("key").notNull(),
   value: text("value").notNull(),
   category: text("category").notNull().default("general"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+});
+
+
+export const projectResearch = coreSchema.table("project_research", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .references(() => projects.id, { onDelete: "cascade" })
+    .notNull()
+    .unique(),
+
+  // Problem & audience
+  problemStatement: text("problem_statement"), // Who has what pain?
+  targetAudience: text("target_audience"), // ICP description
+  existingSolutions: text("existing_solutions"), // How do they solve it now?
+
+  // Competitive landscape
+  competitors: jsonb("competitors"), // [{name, url, pricing, strengths, weaknesses}]
+
+  // Validation signals
+  interviewCount: integer("interview_count").default(0),
+  interviewNotes: text("interview_notes"), // Markdown summary
+  waitlistCount: integer("waitlist_count").default(0),
+  redditThreads: text("reddit_threads"), // Relevant links / notes
+  otherSignals: text("other_signals"), // Any other validation evidence
+
+  // Market & monetization
+  marketSize: text("market_size"), // TAM/SAM/SOM estimate
+  monetization: text("monetization"), // Pricing model idea
+
+  // Verdict
+  verdict: text("verdict"), // go | pivot | kill | pending
+  verdictReason: text("verdict_reason"),
+  verdictAt: timestamp("verdict_at", { withTimezone: true }),
+
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
@@ -103,4 +139,5 @@ export type Project = typeof projects.$inferSelect;
 export type ProjectLog = typeof projectLogs.$inferSelect;
 export type ProjectTask = typeof projectTasks.$inferSelect;
 export type ProjectContext = typeof projectContext.$inferSelect;
+export type ProjectResearch = typeof projectResearch.$inferSelect;
 export type KiroDispatch = typeof kiroDispatches.$inferSelect;

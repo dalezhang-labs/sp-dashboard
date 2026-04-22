@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-import { projects } from "@/lib/schema";
+import { projects, projectResearch } from "@/lib/schema";
 
 function toSlug(name: string): string {
   return name
@@ -15,7 +15,7 @@ function toSlug(name: string): string {
 export async function createProject(formData: FormData) {
   const name = (formData.get("name") as string).trim();
   const description = (formData.get("description") as string | null)?.trim() || null;
-  const status = (formData.get("status") as string) || "idea";
+  const problemStatement = (formData.get("problem_statement") as string | null)?.trim() || null;
   const techRaw = (formData.get("tech_stack") as string | null)?.trim() || "";
   const techStack = techRaw
     ? techRaw.split(",").map((t) => t.trim()).filter(Boolean)
@@ -27,7 +27,7 @@ export async function createProject(formData: FormData) {
   let slug = baseSlug;
   let attempt = 0;
 
-  // ensure unique slug
+  // Ensure unique slug
   while (true) {
     const existing = await db.query.projects.findFirst({
       where: (p, { eq }) => eq(p.slug, slug),
@@ -37,6 +37,19 @@ export async function createProject(formData: FormData) {
     slug = `${baseSlug}-${attempt}`;
   }
 
-  await db.insert(projects).values({ name, slug, description, status, techStack });
-  redirect("/");
+  // Create project in research status
+  const [project] = await db
+    .insert(projects)
+    .values({ name, slug, description, status: "research", techStack })
+    .returning();
+
+  // Create research record with problem statement if provided
+  await db.insert(projectResearch).values({
+    projectId: project.id,
+    problemStatement,
+    verdict: "pending",
+  });
+
+  // Redirect to the project's research tab
+  redirect(`/projects/${slug}`);
 }
