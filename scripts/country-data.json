@@ -1,0 +1,3690 @@
+{
+  "product_recommendation": {
+    "name": "Product Recommendations",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "advanced_component_library": {
+    "name": "Advanced Components Library",
+    "reviews": [
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "smartpush": {
+    "name": "SmartPush",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "review_management": {
+    "name": "Product Review",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "product_bundles": {
+    "name": "Product Upsells & Bundles",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "India",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "conversion_booster": {
+    "name": "Conversion Booster",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "zhekouhuodongsheji": {
+    "name": "Design maker for campaigns",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "custom_code": {
+    "name": "Custom Code",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 9
+  },
+  "seo_search_engine_optimization_2_0": {
+    "name": "EasyRank SEO All-in-one",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "multi_language_multi_currency_assistant": {
+    "name": "Auto Translate & Currency Assistant",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "add_to_cart": {
+    "name": "Add to cart button",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "product_customization": {
+    "name": "Product Option Customizer&ProductBundler",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "countdown_timer": {
+    "name": "Countdown Timer",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "smart_search_recommendation": {
+    "name": "Smart Search Recommendation",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "xingnengyouhuabooster3451": {
+    "name": "Page Speed Booster",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "gdpr_privacy_banner": {
+    "name": "GDPR-Privacy Banner",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "flow": {
+    "name": "Flow Automation",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "member_system": {
+    "name": "Member System",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "popups": {
+    "name": "Pop-ups",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Canada",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "smart_feed_prod": {
+    "name": "Smart Feed",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "extra_checkout_field": {
+    "name": "Extra Checkout Field",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "sales_notification": {
+    "name": "Sales Popup",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "product_filters_color_palette": {
+    "name": "Product Filters & Color Swatch",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "google": {
+    "name": "Google",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "all_in_one": {
+    "name": "Marketing-All in one",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "post": {
+    "name": "Post Shopping",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "gift_offer": {
+    "name": "Gift Offer",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "live": {
+    "name": "Live Shopping",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "flash_sales": {
+    "name": "Flash Sales",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "simprosys_for_google_shopping_feed": {
+    "name": "Simprosys Google Shopping Feed",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "size_chart": {
+    "name": "Size Chart",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "cart_upsell_progress_bar": {
+    "name": "Cart Upsell - Progress Bar",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "easybuy": {
+    "name": "EasyBuy Oneshop & COD Form",
+    "reviews": [
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "tiktok_multi_pixel_installation": {
+    "name": "TikTok Multi Pixel Installation",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "facebook": {
+    "name": "Facebook",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "smart_landing_page": {
+    "name": "Smart landing page",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 9
+  },
+  "marketing_calendar": {
+    "name": "Marketing Calendar",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Canada",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "announcement_bar": {
+    "name": "Announcement Bar",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "pos": {
+    "name": "POS-Point of Sale",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 3,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "mc": {
+    "name": "Messages",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "variant_combination": {
+    "name": "Variants Combination",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "facebook_multi_pixels": {
+    "name": "Meta (Facebook) Multi Pixels",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "multiplatform_pixel_installation": {
+    "name": "Multi-channel Pixel Installation",
+    "reviews": [
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "advertising_data_reporting_assistant": {
+    "name": "Ads Conversion Tracking",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "hide_product": {
+    "name": "Hide Product",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "mega_menu_builder": {
+    "name": "Mega Menu Builder",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "tiktok-business-plugin": {
+    "name": "TikTok",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "shopify_store_one_click_relocation": {
+    "name": "Multi-platform Store Migration",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "affiliate_marketing": {
+    "name": "Affiliate Marketing",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "multi_language_translator": {
+    "name": "UGC Multi-Language Visual Translator",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "order_invoice_customization": {
+    "name": "Order Invoice Customization",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "product_boost_extension": {
+    "name": "Product Pin",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "instagram-photo": {
+    "name": "Instagram Feed",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 9
+  },
+  "whatsapp": {
+    "name": "WhatsApp",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "wishlist": {
+    "name": "Wishlist",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "b2b_wholesale_solution": {
+    "name": "B2B & Wholesale Solution",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "pre_order_now": {
+    "name": "Pre-order",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 9
+  },
+  "extra_checkout_field_plus": {
+    "name": "Extra Checkout Field Plus",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "telegram": {
+    "name": "Telegram",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "salesmartly": {
+    "name": "SaleSmartly：Omnichannel chat",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 1,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Taiwan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "sku_generator": {
+    "name": "SKU Generator",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "section_gallery": {
+    "name": "Section Gallery",
+    "reviews": [
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "oneship": {
+    "name": "OneShip",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 2,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "buyer_blacklist": {
+    "name": "Merchant risk management",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "multichannel_connect": {
+    "name": "Multichannel Connect-MCC",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "duoshichangzhongdingxiang": {
+    "name": "Geolocation Redirects",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "variants_multiple_images": {
+    "name": "Variants Multiple Images",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 3,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "klaviyo_youjian_smsyingxiao": {
+    "name": "Klaviyo: Email Marketing & SMS",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "line_messenger": {
+    "name": "LINE",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 3
+  },
+  "customeow6601": {
+    "name": "CustoMeow POD Designer",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 2
+  },
+  "microsoft_channel": {
+    "name": "Microsoft channel",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "omnisend": {
+    "name": "Omnisend",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "Subscription_e-commerce": {
+    "name": "Subscriptions",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "lucky_orange": {
+    "name": "Lucky Orange: User Behavior Analysis",
+    "reviews": [
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 4
+  },
+  "ymq_product_options": {
+    "name": "Ymq Product Options & Variants",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 3
+  },
+  "pareto_bundle_quantity_breaks": {
+    "name": "Pareto Bundles & Quantity Breaks",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 3
+  },
+  "shopcaiji_product_collection_system": {
+    "name": "Shopcaiji Product Collection System",
+    "reviews": [
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "FormBuilderElsner": {
+    "name": "Form Builder - Elsner",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 2,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 1,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 1,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "smart_inventory_management": {
+    "name": "Smart Inventory Management",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "tracker": {
+    "name": "Tracker",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "delivery_appointment": {
+    "name": "Delivery appointment",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 3,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "order_cancel_helper": {
+    "name": "Order Cancel Helper",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "td_antifraud": {
+    "name": "TrustDecision Fraud Prevention",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "dianxiaobao": {
+    "name": "Dianxiaobao",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "zapier_automation_task_builder": {
+    "name": "Zapier: Automation Task Builder",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 10
+  },
+  "low_stock_notification": {
+    "name": "Advanced Inventory Management",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "calendar_booking": {
+    "name": "Calendar Booking-In-Store Service",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Indonesia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "shipper_logistic": {
+    "name": "PT. Shippindo Teknologi Logistik",
+    "reviews": [
+      {
+        "country": "Hong Kong SAR",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "easyship_all_in_one_shipping": {
+    "name": "Easyship - All in One Shipping",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "bulkify": {
+    "name": "Bulkify - Powerful Bulk Editing Tool",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "MadeMine": {
+    "name": "MadeMine: Easy Dropshipping",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "3d_display": {
+    "name": "3D upgrade of the store",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "eprolo_dropshipping": {
+    "name": "EPROLO-Dropshipping",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Vietnam",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 2
+  },
+  "s_estimated_delivery_date_eta": {
+    "name": "S: Estimated Delivery Date ETA",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "yuangongkaoqinguanli": {
+    "name": "Staff Attendance Management",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 7
+  },
+  "zendesk": {
+    "name": "Zendesk",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "onewarehouse": {
+    "name": "OneWarehouse",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "toastibar": {
+    "name": "ToastiBar",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 6
+  },
+  "hiko_social_login": {
+    "name": "HIKO Biometric, OTP & Social Login",
+    "reviews": [
+      {
+        "country": "Hong Kong SAR",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "xero_bridge": {
+    "name": "Xero Bridge by Parex",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "ecomposer": {
+    "name": "EComposer Landing Page Builder",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "dcs_gto_data_sync": {
+    "name": "GTO data sync",
+    "reviews": [
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Japan",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 4,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 4,
+        "date": ""
+      }
+    ],
+    "total_fetched": 8
+  },
+  "litcommerce": {
+    "name": "LitCommerce Sell on Marketplaces",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 3
+  },
+  "sendcloudapp": {
+    "name": "Sendcloud Shipping",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "easypost_shipping_dashboard": {
+    "name": "Easypost Shipping Dashboard",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 2,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "hyxun": {
+    "name": "hyxun",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 2
+  },
+  "dazedianzhanggongju": {
+    "name": "STORE MANAGER TOOLS",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 2,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "nxlink": {
+    "name": "NXLink - Intelligent Marketing Platform",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "kakaclo_dropshipping": {
+    "name": "Kakaclo - Dropshipping",
+    "reviews": [
+      {
+        "country": "Guatemala",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "lool": {
+    "name": "LooL: Prescription Lens",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "magic_image_seo_optimizer": {
+    "name": "Magic Image SEO Optimizer",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "desku_live_chat_ai_chatbots": {
+    "name": "Desku Live Chat & AI Chatbots",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "CedCommerce__ebay_integration": {
+    "name": "CedCommerce eBay Integration",
+    "reviews": [
+      {
+        "country": "Australia",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "notim": {
+    "name": "Notim: Back In Stock+Notify Me",
+    "reviews": [
+      {
+        "country": "Malaysia",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "China",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United Kingdom",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      },
+      {
+        "country": "United States",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 5
+  },
+  "sunsky6651": {
+    "name": "SUNSKY Dropshipping ERP",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 3,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "mc999": {
+    "name": "MC999",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  },
+  "fiamp": {
+    "name": "LuckSeller",
+    "reviews": [
+      {
+        "country": "United Kingdom",
+        "stars": 1,
+        "date": ""
+      },
+      {
+        "country": "Singapore",
+        "stars": 5,
+        "date": ""
+      }
+    ],
+    "total_fetched": 2
+  },
+  "lingwukeji": {
+    "name": "lingwu   ERP",
+    "reviews": [
+      {
+        "country": "China",
+        "stars": 1,
+        "date": ""
+      }
+    ],
+    "total_fetched": 1
+  }
+}

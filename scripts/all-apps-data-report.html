@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHOPLINE Apps Report</title>
+<style>
+body{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; margin:0; background:#0b1020; color:#e8ecff;}
+.wrap{max-width:1200px; margin:0 auto; padding:32px 20px 48px;}
+.hero{background:linear-gradient(135deg,#1b2a6b,#7c3aed); padding:28px; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.hero h1{margin:0 0 8px; font-size:36px}
+.hero p{margin:0; color:#eef2ffcc}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:20px 0}
+.card{background:#121a33; border:1px solid #243055; border-radius:18px; padding:18px}
+.card h3{margin:0 0 8px; font-size:14px; text-transform:uppercase; letter-spacing:.08em; color:#9fb2ff}
+.card .num{font-size:28px; font-weight:700}
+.section{margin-top:28px}
+.section h2{margin:0 0 14px; font-size:22px}
+table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:18px; background:#10182f; border:1px solid #243055}
+th,td{padding:14px 12px; vertical-align:top; border-bottom:1px solid #213055; text-align:left; font-size:14px}
+th{position:sticky; top:0; background:#182344; color:#cfe1ff}
+tr:hover td{background:#121d3b}
+.muted{color:#91a0c7; font-size:12px; margin-top:4px}
+.badge{display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px; background:#22c55e22; color:#7CFFAF; font-size:12px; border:1px solid #22c55e55}
+.desc{color:#c9d3ef; max-width:420px}
+.pills{display:flex; flex-wrap:wrap; gap:10px}
+.pill{padding:8px 12px; background:#121a33; border:1px solid #243055; border-radius:999px}
+.small{color:#9fb2ff; font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>SHOPLINE Apps 数据报告</h1>
+    <p>基于 <code>all-apps-data.json</code> 的整理摘要：应用数量、官方生态、评分和分类分布。</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Total Apps</h3><div class="num">120</div></div>
+    <div class="card"><h3>Official Apps</h3><div class="num">67</div></div>
+    <div class="card"><h3>Categories</h3><div class="num">21</div></div>
+    <div class="card"><h3>Avg Rating</h3><div class="num">4.66</div></div>
+  </div>
+  <div class="section"><h2>Quick Take</h2><div class="card"><div class="small">这份数据明显是 SHOPLINE 应用市场数据，重点集中在转化优化、营销、社交信任和店铺能力增强。官方 app 占比较高，且大量应用提供免费计划，说明生态策略偏“先拉安装再增强留存”。</div></div></div>
+  <div class="section">
+    <h2>Top 20 by Rating + Review Signal</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Developer</th><th>Category</th><th>Rating</th><th>Reviews</th><th>Price</th><th>Description</th></tr></thead>
+      <tbody>
+    <tr>
+      <td><strong>Countdown Timer</strong><div class='muted'>product_customization</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>100</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Product Upsells &amp; Bundles</strong><div class='muted'>review_management</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>50</td>
+      <td>Free plan provided</td>
+      <td class='desc'>5.0 (50) Install About Reviews Dynamic Product Bundles Increase product range exposure on the product detail page, with dynamic product bundling. Choose product combos or let our AI algorithm choose based on real-time st</td>
+    </tr>
+    <tr>
+      <td><strong>Pop-ups</strong><div class='muted'>member_system</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>50</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Flash Sales</strong><div class='muted'>live</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>40</td>
+      <td>Free plan provided</td>
+      <td class='desc'>5.0 (40) Install About Reviews Flash sales campaign management Provides tools for quick management, create/edit your campaign instantly and check corresponding sales data Promotion page Automatically generate the aggrega</td>
+    </tr>
+    <tr>
+      <td><strong>Cart Upsell - Progress Bar</strong><div class='muted'>size_chart</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>40</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Announcement Bar</strong><div class='muted'>marketing_calendar</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>40</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Gift Offer</strong><div class='muted'>post</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>35</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Marketing Calendar</strong><div class='muted'>smart_landing_page</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Marketing</td>
+      <td>5.0</td>
+      <td>30</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>TrustDecision Fraud Prevention</strong><div class='muted'>order_cancel_helper</div></td>
+      <td>TrustDecision</td>
+      <td>Developer</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Wishlist</strong><div class='muted'>whatsapp</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Extra Checkout Field Plus</strong><div class='muted'>pre_order_now</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Store Optimization</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Tracker</strong><div class='muted'>jomalls_erp</div></td>
+      <td>Evermighty</td>
+      <td>Shipping</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Dianxiaobao</strong><div class='muted'>wotohub_influencer_marketing_solution</div></td>
+      <td>国泰产险</td>
+      <td>Returns and Warranty</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>Free plan provided</td>
+      <td class='desc'></td>
+    </tr>
+    <tr>
+      <td><strong>Member System</strong><div class='muted'>flow</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Customer loyalty</td>
+      <td>4.9</td>
+      <td>114</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.9 (114) Install About Reviews Comprehensive Member Point Program 12 earning methods and 4 redemption options, tailored to customer behavior and optimized for every stage of the shopping journey. Seamless integration ac</td>
+    </tr>
+    <tr>
+      <td><strong>Subscriptions</strong><div class='muted'>pingpong</div></td>
+      <td>Innovelabs</td>
+      <td>Marketing</td>
+      <td>4.9</td>
+      <td>94</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.9 (94) Install About Reviews Powerful Product Bundling Easily create flexible selling formats like “build-your-own box” or curated bundles through product groups and bundle models. Configure multiple groups with requir</td>
+    </tr>
+    <tr>
+      <td><strong>Pareto Bundles &amp; Quantity Breaks</strong><div class='muted'>ymq_product_options</div></td>
+      <td>Omega</td>
+      <td>Marketing</td>
+      <td>4.9</td>
+      <td>17</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.9 (17) Install View Demo Store About Price Reviews Boost Sales with Quantity Breaks and Product Bundles Offer tiered discounts to reward customers who buy more. Set up quantity breaks with percentage, fixed amount, or </td>
+    </tr>
+    <tr>
+      <td><strong>Conversion Booster</strong><div class='muted'>product_bundles</div></td>
+      <td>Innovelabs</td>
+      <td>Store Optimization</td>
+      <td>4.8</td>
+      <td>107</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.8 (107) Install About Reviews Real-time Visitor Display visitor counter information in product detail page helps in website reliability. It also helps to encourage visitors to complete order. Countdown Tool Display cou</td>
+    </tr>
+    <tr>
+      <td><strong>Product Review</strong><div class='muted'>smartpush</div></td>
+      <td>SHOPLINE <span class="badge">Official</span></td>
+      <td>Social Trust</td>
+      <td>4.8</td>
+      <td>92</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.8 (92) Install About Reviews Evaluation settings Rich evaluation function settings, highly customized style settings to adapt to your store. Evaluation Management It supports multi-level and multi-dimensional product r</td>
+    </tr>
+    <tr>
+      <td><strong>Order Invoice Customization</strong><div class='muted'>multi_platform_comment_collection</div></td>
+      <td>Innovelabs</td>
+      <td>Store Optimization</td>
+      <td>4.8</td>
+      <td>88</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.8 (88) Install About Reviews Flexible invoice management Supports fields not featured in SHOPLINE invoice outlines Customize invoices Find the right templates and fine-tune invoices to your needs Designed for scale Sup</td>
+    </tr>
+    <tr>
+      <td><strong>Geolocation Redirects</strong><div class='muted'>mediago_pixel</div></td>
+      <td>Innovelabs</td>
+      <td>Store Optimization</td>
+      <td>4.8</td>
+      <td>87</td>
+      <td>Free plan provided</td>
+      <td class='desc'>4.8 (87) Install About Reviews Improving the localized experience for international customers Avoid customer loss due to customers visiting the wrong URL Customizable page components You can customize the redirect compon</td>
+    </tr></tbody>
+    </table>
+  </div>
+  <div class="section">
+    <h2>Category Distribution</h2>
+    <div class="pills"><div class="pill"><strong>Store Optimization</strong> <span class="small">(42)</span></div><div class="pill"><strong>Marketing</strong> <span class="small">(18)</span></div><div class="pill"><strong>Online Sales</strong> <span class="small">(13)</span></div><div class="pill"><strong>Store Operations</strong> <span class="small">(5)</span></div><div class="pill"><strong>ERP</strong> <span class="small">(5)</span></div><div class="pill"><strong>Advertising</strong> <span class="small">(5)</span></div><div class="pill"><strong>POD</strong> <span class="small">(3)</span></div><div class="pill"><strong>Store Security</strong> <span class="small">(3)</span></div><div class="pill"><strong>Support</strong> <span class="small">(3)</span></div><div class="pill"><strong>Shipping</strong> <span class="small">(3)</span></div><div class="pill"><strong>Order Management</strong> <span class="small">(3)</span></div><div class="pill"><strong>Social Trust</strong> <span class="small">(2)</span></div><div class="pill"><strong>Internationalization</strong> <span class="small">(2)</span></div><div class="pill"><strong>Service Support</strong> <span class="small">(2)</span></div><div class="pill"><strong>Returns and Warranty</strong> <span class="small">(2)</span></div><div class="pill"><strong>Finance</strong> <span class="small">(2)</span></div><div class="pill"><strong>AI Tools</strong> <span class="small">(2)</span></div><div class="pill"><strong>Developer</strong> <span class="small">(2)</span></div><div class="pill"><strong>Customer loyalty</strong> <span class="small">(1)</span></div><div class="pill"><strong>Image Optimization – Choose image selection option in the app, either first image or second image if you&#x27;ve a single product</strong> <span class="small">(1)</span></div><div class="pill"><strong>Offline Sales</strong> <span class="small">(1)</span></div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopline App Store — 评论国家分布</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1117; --surface: #1a1d27; --surface2: #22263a;
+      --border: #2e3347; --text: #e2e8f0; --muted: #8892a4;
+      --accent: #6366f1; --accent2: #22d3ee; --yellow: #f59e0b;
+    }
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    .header { background: linear-gradient(135deg, #1a1d27, #0f1117); border-bottom: 1px solid var(--border); padding: 36px 24px 28px; text-align: center; }
+    .header h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #6366f1, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+    .header p { color: var(--muted); font-size: 0.85rem; }
+
+    .stats-bar { display: flex; gap: 12px; padding: 20px 24px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+    .stat { flex: 1; min-width: 110px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; text-align: center; }
+    .stat-val { font-size: 1.6rem; font-weight: 700; color: var(--accent2); }
+    .stat-lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+
+    /* Chart section */
+    .chart-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+    .chart-section h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+    .chart-wrap { height: 320px; }
+
+    /* Country grid */
+    .section-title { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+    .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 40px; }
+
+    .country-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: border-color .15s, transform .15s; }
+    .country-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .rank { font-size: 0.7rem; color: var(--muted); font-weight: 600; min-width: 24px; }
+    .flag { font-size: 1.6rem; }
+    .country-info { flex: 1; }
+    .country-info h3 { font-size: 0.9rem; font-weight: 600; }
+    .meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .avg-rating { text-align: right; }
+    .avg-num { font-size: 1.3rem; font-weight: 700; color: var(--yellow); }
+    .avg-label { font-size: 0.65rem; color: var(--muted); }
+
+    .star-bars { margin-bottom: 10px; }
+    .sbar-row { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
+    .sbar-label { font-size: 0.65rem; color: var(--muted); width: 18px; text-align: right; }
+    .sbar-track { flex: 1; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+    .sbar-fill { height: 100%; background: var(--yellow); border-radius: 2px; }
+    .sbar-count { font-size: 0.62rem; color: var(--muted); width: 18px; }
+
+    .top-apps { display: flex; flex-wrap: wrap; gap: 5px; }
+    .app-tag { font-size: 0.68rem; background: rgba(99,102,241,.12); color: #a78bfa; border: 1px solid rgba(99,102,241,.2); padding: 2px 7px; border-radius: 4px; }
+    .app-tag em { font-style: normal; opacity: .7; }
+
+    /* Table */
+    .table-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { background: var(--surface2); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .app-name-cell { font-weight: 500; }
+    .num { text-align: right; color: var(--accent2); font-weight: 600; }
+    .countries-cell { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .country-grid { grid-template-columns: 1fr; }
+      .stats-bar { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Shopline App Store — 评论国家分布</h1>
+  <p>基于 596 条评论数据 · 14 个国家/地区 · 生成于 2026年04月22日</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-val">596</div><div class="stat-lbl">总评论数</div></div>
+  <div class="stat"><div class="stat-val">14</div><div class="stat-lbl">国家/地区</div></div>
+  <div class="stat"><div class="stat-val">118</div><div class="stat-lbl">覆盖应用</div></div>
+  <div class="stat"><div class="stat-val">United States</div><div class="stat-lbl">最多评论国家</div></div>
+  <div class="stat"><div class="stat-val">105</div><div class="stat-lbl">最多评论数</div></div>
+</div>
+
+<div class="main">
+
+  <!-- Bar chart -->
+  <div class="chart-section">
+    <h2>📊 Top 20 国家评论数量</h2>
+    <div class="chart-wrap">
+      <canvas id="countryChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Country cards -->
+  <div class="section-title">🌍 各国家/地区详情（Top 30）</div>
+  <div class="country-grid">
+    
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#1</div>
+        <div class="flag">🇺🇸</div>
+        <div class="country-info">
+          <h3>United States</h3>
+          <div class="meta">105 条评论 · 17.6% · 68 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.54</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:56%"></div></div>
+              <span class="sbar-count">59</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:43%"></div></div>
+              <span class="sbar-count">45</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Advanced Components Libra <em>(2)</em></span><span class="app-tag">SmartPush <em>(2)</em></span><span class="app-tag">Conversion Booster <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#2</div>
+        <div class="flag">🇸🇬</div>
+        <div class="country-info">
+          <h3>Singapore</h3>
+          <div class="meta">94 条评论 · 15.8% · 63 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.52</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:56%"></div></div>
+              <span class="sbar-count">53</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:41%"></div></div>
+              <span class="sbar-count">39</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Delivery appointment <em>(3)</em></span><span class="app-tag">Product Recommendations <em>(2)</em></span><span class="app-tag">Product Option Customizer <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#3</div>
+        <div class="flag">🇲🇾</div>
+        <div class="country-info">
+          <h3>Malaysia</h3>
+          <div class="meta">85 条评论 · 14.3% · 61 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.55</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:62%"></div></div>
+              <span class="sbar-count">53</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:34%"></div></div>
+              <span class="sbar-count">29</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:1%"></div></div>
+              <span class="sbar-count">1</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Advanced Components Libra <em>(2)</em></span><span class="app-tag">Conversion Booster <em>(2)</em></span><span class="app-tag">Auto Translate & Currency <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#4</div>
+        <div class="flag">🇬🇧</div>
+        <div class="country-info">
+          <h3>United Kingdom</h3>
+          <div class="meta">81 条评论 · 13.6% · 63 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.44</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:62%"></div></div>
+              <span class="sbar-count">50</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:31%"></div></div>
+              <span class="sbar-count">25</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:2%"></div></div>
+              <span class="sbar-count">2</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:5%"></div></div>
+              <span class="sbar-count">4</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Variants Multiple Images <em>(3)</em></span><span class="app-tag">Product Recommendations <em>(2)</em></span><span class="app-tag">SmartPush <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#5</div>
+        <div class="flag">🇨🇳</div>
+        <div class="country-info">
+          <h3>China</h3>
+          <div class="meta">66 条评论 · 11.1% · 53 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.47</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:71%"></div></div>
+              <span class="sbar-count">47</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:20%"></div></div>
+              <span class="sbar-count">13</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:3%"></div></div>
+              <span class="sbar-count">2</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:6%"></div></div>
+              <span class="sbar-count">4</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">SaleSmartly：Omnichannel c <em>(3)</em></span><span class="app-tag">Product Recommendations <em>(2)</em></span><span class="app-tag">Add to cart button <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#6</div>
+        <div class="flag">🇦🇺</div>
+        <div class="country-info">
+          <h3>Australia</h3>
+          <div class="meta">62 条评论 · 10.4% · 44 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.61</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:61%"></div></div>
+              <span class="sbar-count">38</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:39%"></div></div>
+              <span class="sbar-count">24</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Conversion Booster <em>(2)</em></span><span class="app-tag">Auto Translate & Currency <em>(2)</em></span><span class="app-tag">GDPR-Privacy Banner <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#7</div>
+        <div class="flag">🇻🇳</div>
+        <div class="country-info">
+          <h3>Vietnam</h3>
+          <div class="meta">42 条评论 · 7.0% · 26 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.6</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:60%"></div></div>
+              <span class="sbar-count">25</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:40%"></div></div>
+              <span class="sbar-count">17</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Advanced Components Libra <em>(2)</em></span><span class="app-tag">Conversion Booster <em>(2)</em></span><span class="app-tag">Auto Translate & Currency <em>(2)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#8</div>
+        <div class="flag">🇯🇵</div>
+        <div class="country-info">
+          <h3>Japan</h3>
+          <div class="meta">30 条评论 · 5.0% · 28 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.8</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:80%"></div></div>
+              <span class="sbar-count">24</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:20%"></div></div>
+              <span class="sbar-count">6</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Product Review <em>(2)</em></span><span class="app-tag">Google <em>(2)</em></span><span class="app-tag">Advanced Components Libra <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#9</div>
+        <div class="flag">🌍</div>
+        <div class="country-info">
+          <h3>Hong Kong SAR</h3>
+          <div class="meta">14 条评论 · 2.3% · 14 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.71</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:93%"></div></div>
+              <span class="sbar-count">13</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:7%"></div></div>
+              <span class="sbar-count">1</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Product Upsells & Bundles <em>(1)</em></span><span class="app-tag">Countdown Timer <em>(1)</em></span><span class="app-tag">Pop-ups <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#10</div>
+        <div class="flag">🇮🇩</div>
+        <div class="country-info">
+          <h3>Indonesia</h3>
+          <div class="meta">12 条评论 · 2.0% · 12 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">4.42</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:67%"></div></div>
+              <span class="sbar-count">8</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:25%"></div></div>
+              <span class="sbar-count">3</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:8%"></div></div>
+              <span class="sbar-count">1</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Design maker for campaign <em>(1)</em></span><span class="app-tag">Custom Code <em>(1)</em></span><span class="app-tag">EasyRank SEO All-in-one <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#11</div>
+        <div class="flag">🇨🇦</div>
+        <div class="country-info">
+          <h3>Canada</h3>
+          <div class="meta">2 条评论 · 0.3% · 2 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">5.0</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:100%"></div></div>
+              <span class="sbar-count">2</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Pop-ups <em>(1)</em></span><span class="app-tag">Marketing Calendar <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#12</div>
+        <div class="flag">🇮🇳</div>
+        <div class="country-info">
+          <h3>India</h3>
+          <div class="meta">1 条评论 · 0.2% · 1 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">5.0</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:100%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Product Upsells & Bundles <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#13</div>
+        <div class="flag">🇹🇼</div>
+        <div class="country-info">
+          <h3>Taiwan</h3>
+          <div class="meta">1 条评论 · 0.2% · 1 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">5.0</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:100%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">SaleSmartly：Omnichannel c <em>(1)</em></span></div>
+    </div>
+    <div class="country-card">
+      <div class="card-top">
+        <div class="rank">#14</div>
+        <div class="flag">🌍</div>
+        <div class="country-info">
+          <h3>Guatemala</h3>
+          <div class="meta">1 条评论 · 0.2% · 1 款应用</div>
+        </div>
+        <div class="avg-rating">
+          <div class="avg-num">5.0</div>
+          <div class="avg-label">平均评分</div>
+        </div>
+      </div>
+      <div class="star-bars"><div class="sbar-row">
+              <span class="sbar-label">5★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:100%"></div></div>
+              <span class="sbar-count">1</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">4★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">3★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">2★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div><div class="sbar-row">
+              <span class="sbar-label">1★</span>
+              <div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div>
+              <span class="sbar-count">0</span>
+            </div></div>
+      <div class="top-apps"><span class="app-tag">Kakaclo - Dropshipping <em>(1)</em></span></div>
+    </div>
+  </div>
+
+  <!-- Per-app table -->
+  <div class="section-title">📱 各应用评论国家分布（Top 20 应用）</div>
+  <div class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>应用名称</th>
+          <th style="text-align:right">评论数</th>
+          <th>主要评论国家（Top 3）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="app-name-cell">Conversion Booster</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Auto Translate & Currency Assistant</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">GDPR-Privacy Banner</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Ads Conversion Tracking</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Mega Menu Builder</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">UGC Multi-Language Visual Translato</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Order Invoice Customization</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Geolocation Redirects</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Order Cancel Helper</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Zapier: Automation Task Builder</td>
+          <td class="num">10</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Custom Code</td>
+          <td class="num">9</td>
+          <td class="countries-cell">🇺🇸United States (2) / 🇬🇧United Kingdom (2) / 🇸🇬Singapore (1)</td>
+        </tr><tr>
+          <td class="app-name-cell">Smart landing page</td>
+          <td class="num">9</td>
+          <td class="countries-cell">🇸🇬Singapore (2) / 🇻🇳Vietnam (2) / 🇺🇸United States (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Instagram Feed</td>
+          <td class="num">9</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇦🇺Australia (2) / 🇻🇳Vietnam (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Pre-order</td>
+          <td class="num">9</td>
+          <td class="countries-cell">🇦🇺Australia (2) / 🇸🇬Singapore (2) / 🇺🇸United States (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Advanced Components Library</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇻🇳Vietnam (2) / 🇲🇾Malaysia (2) / 🇺🇸United States (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Page Speed Booster</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇬🇧United Kingdom (1) / 🇻🇳Vietnam (1) / 🇯🇵Japan (1)</td>
+        </tr><tr>
+          <td class="app-name-cell">Variants Combination</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇬🇧United Kingdom (2) / 🇸🇬Singapore (2) / 🇺🇸United States (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">TikTok</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇬🇧United Kingdom (2) / 🇺🇸United States (2) / 🇦🇺Australia (2)</td>
+        </tr><tr>
+          <td class="app-name-cell">Section Gallery</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇺🇸United States (2) / 🇸🇬Singapore (2) / 🇻🇳Vietnam (1)</td>
+        </tr><tr>
+          <td class="app-name-cell">Merchant risk management</td>
+          <td class="num">8</td>
+          <td class="countries-cell">🇲🇾Malaysia (2) / 🇺🇸United States (2) / 🇦🇺Australia (2)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+var ctx = document.getElementById('countryChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["United States", "Singapore", "Malaysia", "United Kingdom", "China", "Australia", "Vietnam", "Japan", "Hong Kong SAR", "Indonesia", "Canada", "India", "Taiwan", "Guatemala"],
+    datasets: [{
+      label: '评论数',
+      data: [105, 94, 85, 81, 66, 62, 42, 30, 14, 12, 2, 1, 1, 1],
+      backgroundColor: ["#6366f1", "#22d3ee", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#10b981", "#f97316", "#ec4899", "#3b82f6", "#84cc16", "#eab308", "#14b8a6", "#f43f5e", "#a855f7", "#0ea5e9", "#4ade80", "#fb923c", "#e879f9"],
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return ctx.parsed.y + ' 条评论'; }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#8892a4', font: { size: 11 } },
+        grid: { color: '#2e3347' }
+      },
+      y: {
+        ticks: { color: '#8892a4' },
+        grid: { color: '#2e3347' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
